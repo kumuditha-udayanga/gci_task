@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Div to load persons -->
+        <div id="content">
+
+        </div>
+    </div>
+
+</body>
+
+<!-- Jquey & Bootstrap -->
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- Mushtache JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+
+<!-- Template to render -->
+<script type="text/html" id="template">
+    {{#Janathawa}}
+    <div class="row">
+        <div class="col-md-4"><h1>Name</h1>{{name}}</div>
+        <div class="col-md-4"><h1>Email</h1>{{email}}</div>
+        <div class="col-md-4"><h1>Commits</h1>{{commit}}</div>
+    </div>
+    {{/Janathawa}}
+</script>
+
+
+<script>
+
+    // Persons object
+    let persons = [{
+        "name": "Kumuditha",
+        "age": 16,
+        "band": "O2"
+    },
+    {
+        "name": "JSON",
+        "age": 17,
+        "band": "PURPLE RANGE"
+    }, {
+        "name": "JAVA",
+        "age": 20,
+        "band": "MARIANES"
+    }];
+
+    $(function () {
+        // render persons with mustache
+        let content = Mustache.render($('#template').html(),{"Janathawa": persons} )
+        // add rendered content inside <div id="content"> </div>
+        $("#content").html(content)
+
+    });
+
+</script>
+</html>
